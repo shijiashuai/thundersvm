@@ -41,5 +41,8 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - cmake -DBUILD_TESTS=ON ..
-script: cmake --build .
+  - cmake ..
+script:
+  - cmake --build .
+  - cd ../python
+  - python setup.py bdist_wheel
