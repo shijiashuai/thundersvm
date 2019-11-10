@@ -31,6 +31,7 @@ jobs:
       language: cpp
       os:
         - linux
+        - osx
       compiler:
         - gcc
 before_install:
@@ -57,5 +58,5 @@ before_deploy:
 deploy:
   provider: releases
   api_key: ${GITHUB_API_TOKEN}
-  file: python/dist/*
+  file: dist/*
   skip_cleanup: true
