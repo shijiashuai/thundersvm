@@ -1,7 +1,6 @@
 branches:
   only:
     - master
-sudo: enabled
 python: "3.6"
 jobs:
   include:
