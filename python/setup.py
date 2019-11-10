@@ -32,10 +32,4 @@ setuptools.setup(name="thundersvm",
                      "License :: OSI Approved :: Apache Software License",
                  ],
                  python_requires=">=3",
-                 ext_modules=[
-                     setuptools.Extension(
-                         name='dummy.module',
-                         sources=[]
-                     )
-                 ]
                  )
