@@ -10,60 +10,49 @@ jobs:
         - CUDA=8.0.61-1
         - CUDA_SHORT=8.0
         - UBUNTU_VERSION=ubuntu1604
+        - BUILD_TAG=cuda8.0
       dist: xenial
       compiler: gcc
       language: python
-      before_install:
-        - INSTALLER=cuda-repo-${UBUNTU_VERSION}_${CUDA}_amd64.deb
-        - wget http://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/${INSTALLER}
-        - sudo dpkg -i ${INSTALLER}
-        - wget https://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/7fa2af80.pub
-        - sudo apt-key add 7fa2af80.pub
-        - sudo apt update -qq
-        - sudo apt install -y cuda-core-${CUDA_SHORT/./-} cuda-cudart-dev-${CUDA_SHORT/./-} cuda-cufft-dev-${CUDA_SHORT/./-} cuda-cusparse-dev-${CUDA_SHORT/./-}
-        - sudo apt clean
-        - CUDA_HOME=/usr/local/cuda-${CUDA_SHORT}
-        - LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
-        - PATH=${CUDA_HOME}/bin:${PATH}
-    #    - name: cu9
-    #      env:
-    #        - CUDA=9.2.148-1
-    #        - CUDA_SHORT=9.2
-    #        - UBUNTU_VERSION=ubuntu1604
-    #      dist: xenial
-    #      language: python
-    #    - name: cu10
-    #      env:
-    #        - CUDA=10.1.105-1
-    #        - CUDA_SHORT=10.1
-    #        - UBUNTU_VERSION=ubuntu1804
-    #      dist: bionic
-    #      language: python
-    #    - name: cpu
-    #      language: cpp
-    #      os:
-    #        - linux
-    #      compiler:
-    #        - gcc
-    - name: cpu
-      language: cpp
-      os:
-        - osx
-      compiler:
-        - gcc
-#    - name: cpu
-#      language: cpp
-#      os:
-#        - windows
-#      compiler:
-#        - gcc
+    - name: cu9
+        env:
+          - CUDA=9.2.148-1
+          - CUDA_SHORT=9.2
+          - UBUNTU_VERSION=ubuntu1604
+          - BUILD_TAG=cuda9.2
+        dist: xenial
+        language: python
+    - name: cu10
+        env:
+          - CUDA=10.1.105-1
+          - CUDA_SHORT=10.1
+          - UBUNTU_VERSION=ubuntu1804
+          - BUILD_TAG=cuda10.1
+        dist: bionic
+        language: python
 before_script:
-  - mkdir build
+  - mkdir build-test
+  - cd build-test
+  - cmake -DBUILD_TESTS=ON ..
+script:
+  - cmake --build . runtest
+before_deploy:
+  - INSTALLER=cuda-repo-${UBUNTU_VERSION}_${CUDA}_amd64.deb
+  - wget http://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/${INSTALLER}
+  - sudo dpkg -i ${INSTALLER}
+  - wget https://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/7fa2af80.pub
+  - sudo apt-key add 7fa2af80.pub
+  - sudo apt update -qq
+  - sudo apt install -y cuda-core-${CUDA_SHORT/./-} cuda-cudart-dev-${CUDA_SHORT/./-} cuda-cufft-dev-${CUDA_SHORT/./-} cuda-cusparse-dev-${CUDA_SHORT/./-}
+  - sudo apt clean
+  - CUDA_HOME=/usr/local/cuda-${CUDA_SHORT}
+  - LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+  - PATH=${CUDA_HOME}/bin:${PATH}
+  - cd ..
+  - make build
   - cd build
   - cmake ..
-script:
   - cmake --build .
-before_deploy:
   - cd ../python
   - python setup.py bdist_wheel
 deploy:
