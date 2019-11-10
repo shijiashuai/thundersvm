@@ -31,7 +31,18 @@ jobs:
       language: cpp
       os:
         - linux
+      compiler:
+        - gcc
+    - name: cpu
+      language: cpp
+      os:
         - osx
+      compiler:
+        - gcc
+    - name: cpu
+      language: cpp
+      os:
+        - windows
       compiler:
         - gcc
 before_install:
@@ -58,5 +69,5 @@ before_deploy:
 deploy:
   provider: releases
   api_key: ${GITHUB_API_TOKEN}
-  file: dist/*
+  file: "dist/*"
   skip_cleanup: true
