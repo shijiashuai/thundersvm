@@ -28,7 +28,7 @@ jobs:
 before_script:
   - mkdir build-test
   - cd build-test
-  - cmake -DBUILD_TESTS=ON ..
+  - cmake -DBUILD_TESTS=ON -DUSE_CUDA=OFF -DUSE_EIGEN=ON ..
 script:
   - cmake --build . runtest
 before_deploy:
