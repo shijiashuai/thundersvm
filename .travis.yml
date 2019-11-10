@@ -10,7 +10,7 @@ jobs:
         - CUDA=8.0.61-1
         - CUDA_SHORT=8.0
         - UBUNTU_VERSION=ubuntu1604
-        - BUILD_TAG=cuda8.0
+        - BUILD_TAG=-cuda8.0
       dist: xenial
       compiler: gcc
       language: python
@@ -19,7 +19,7 @@ jobs:
           - CUDA=9.2.148-1
           - CUDA_SHORT=9.2
           - UBUNTU_VERSION=ubuntu1604
-          - BUILD_TAG=cuda9.2
+          - BUILD_TAG=-cuda9.2
         dist: xenial
         language: python
     - name: cu10
@@ -27,7 +27,7 @@ jobs:
           - CUDA=10.1.105-1
           - CUDA_SHORT=10.1
           - UBUNTU_VERSION=ubuntu1804
-          - BUILD_TAG=cuda10.1
+          - BUILD_TAG=-cuda10.1
         dist: bionic
         language: python
 before_script:
