@@ -5,6 +5,7 @@ language: cpp
 compiler:
   - gcc
 sudo: enabled
+python: 3
 matrix:
   include:
     - name: CUDA 8
@@ -46,3 +47,4 @@ script:
   - cmake --build .
   - cd ../python
   - python setup.py bdist_wheel
+  - ls dist
