@@ -2,6 +2,7 @@ from os import path
 import setuptools
 from shutil import copyfile
 from sys import platform
+import os
 
 dirname = path.dirname(path.abspath(__file__))
 
@@ -16,7 +17,7 @@ else:
 
 if not path.exists(path.join(dirname, "thundersvm", path.basename(lib_path))):
     copyfile(lib_path, path.join(dirname, "thundersvm", path.basename(lib_path)))
-setuptools.setup(name="thundersvm",
+setuptools.setup(name="thundersvm-" + os.environ['TRAVIS_JOB_NAME'],
                  version="0.3.3",
                  packages=["thundersvm"],
                  package_dir={"python": "thundersvm"},
