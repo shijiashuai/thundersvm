@@ -27,6 +27,7 @@ jobs:
 #      language: python
     - name: win
       os: windows
+      language: cpp
 before_script:
   - mkdir build-test
   - cd build-test
