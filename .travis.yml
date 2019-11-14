@@ -55,7 +55,7 @@ before_deploy:
   - mkdir build
   - cd build
   - cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DBUILD_TESTS=ON -G "Visual Studio 14 2015 Win64" ..
-  - cmake --build -j .
+  - cmake --build .
   - cd ../python
   - choco install python --version=3.6.3
   - pip3 install setuptools
