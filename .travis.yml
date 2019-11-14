@@ -58,7 +58,7 @@ before_deploy:
   - cmake --build .
   - cd ../python
   - choco install python --version=3.6.3
-  - refreshenv
+  - export PATH=C:\Python36\bin:$PATH
   - python3 setup.py bdist_wheel
 deploy:
   provider: releases
