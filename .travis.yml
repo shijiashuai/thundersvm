@@ -36,7 +36,8 @@ before_script:
 #  - cmake -DBUILD_TESTS=ON -DUSE_CUDA=OFF -DUSE_EIGEN=ON ..
   - export PATH=$MSBUILD_PATH:$PATH
 #  - cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DBUILD_TESTS=ON -G "Visual Studio 14 2015 Win64" ..
-#script:
+script:
+  - dir
 #  - cmake --build . --target runtest
 before_deploy:
 #  - INSTALLER=cuda-repo-${UBUNTU_VERSION}_${CUDA}_amd64.deb
