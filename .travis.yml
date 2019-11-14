@@ -55,10 +55,11 @@ before_deploy:
   - mkdir build
   - cd build
   - cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DBUILD_TESTS=ON -G "Visual Studio 14 2015 Win64" ..
-  - cmake --build .
+  - cmake --build -j .
   - cd ../python
-  - pip install setuptools
-  - python setup.py bdist_wheel
+  - choco install python --version=3.6.3
+  - pip3 install setuptools
+  - python3 setup.py bdist_wheel
 deploy:
   provider: releases
   api_key: ${GITHUB_API_TOKEN}
