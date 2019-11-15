@@ -59,7 +59,7 @@ before_deploy:
   - cd ../python
   - choco install python --version=3.6.3
   - export PATH=C:\Python36\bin:$PATH
-  - python3 setup.py bdist_wheel
+  - python setup.py bdist_wheel
 deploy:
   provider: releases
   api_key: ${GITHUB_API_TOKEN}
