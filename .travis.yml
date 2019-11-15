@@ -60,6 +60,9 @@ before_deploy:
   - choco install python --version=3.6.3
   - choco install pip
   - export PATH=C:\Python36\bin:$PATH
+  - wget https://bootstrap.pypa.io/get-pip.py
+  - python get-pip.py
+  - pip install setuptools
   - python setup.py bdist_wheel
 deploy:
   provider: releases
