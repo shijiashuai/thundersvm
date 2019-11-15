@@ -30,6 +30,7 @@ jobs:
       language: cpp
       env:
         - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+        - PATH=/c/Python36:/c/Python36/Scripts:$PATH
 before_script:
   - mkdir build-test
   - cd build-test
@@ -58,10 +59,7 @@ before_deploy:
 #   - cmake --build .
   - cd ../python
   - choco install python --version=3.6.3
-  - RefreshEnv
-  - wget https://bootstrap.pypa.io/get-pip.py
-  - python3 get-pip.py
-  - pip3 install setuptools
+  - python -m pip install --upgrade pip
   - python3 setup.py bdist_wheel
 deploy:
   provider: releases
