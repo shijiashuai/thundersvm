@@ -4,16 +4,15 @@ from shutil import copyfile
 from sys import platform
 import os
 
-try:
-    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+
+from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
 
 
-    class bdist_wheel(_bdist_wheel):
-        def finalize_options(self):
-            _bdist_wheel.finalize_options(self)
-            self.root_is_pure = False
-except ImportError:
-    bdist_wheel = None
+class bdist_wheel(_bdist_wheel):
+    def finalize_options(self):
+        _bdist_wheel.finalize_options(self)
+        self.root_is_pure = False
+            
 dirname = path.dirname(path.abspath(__file__))
 
 if platform == "linux" or platform == "linux2":
