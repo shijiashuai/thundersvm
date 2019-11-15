@@ -31,6 +31,7 @@ jobs:
       env:
         - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
+        - BUILD_TAG=-cpu
 before_script:
   - mkdir build-test
   - cd build-test
