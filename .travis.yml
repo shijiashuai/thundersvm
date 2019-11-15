@@ -58,7 +58,7 @@ before_deploy:
 #   - cmake --build .
   - cd ../python
   - choco install python --version=3.6.3
-  - dir C:\Python36\bin\
+  - dir "C:\Python36\bin\"
   - RefreshEnv
   - wget https://bootstrap.pypa.io/get-pip.py
   - python3 get-pip.py
