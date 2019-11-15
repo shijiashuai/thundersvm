@@ -60,9 +60,9 @@ before_deploy:
   - choco install python --version=3.6.3
   - export PATH=C:\Python36\bin:$PATH
   - wget https://bootstrap.pypa.io/get-pip.py
-  - python3 get-pip.py
-  - pip3 install setuptools
-  - python3 setup.py bdist_wheel
+  - C:\Python36\bin\python3 get-pip.py
+  - C:\Python36\bin\python3 install setuptools
+  - C:\Python36\bin\python3 setup.py bdist_wheel
 deploy:
   provider: releases
   api_key: ${GITHUB_API_TOKEN}
