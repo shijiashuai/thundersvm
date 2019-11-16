@@ -28,6 +28,7 @@ windows)
     choco install cuda
     export PATH=${MSBUILD_PATH}:$PATH
     CUDA_HOME="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1"
+    cat "/c/ProgramData/chocolatey/logs/chocolatey.log"
     echo  "1"
     ls "/c/Program Files"
     echo  "2"
