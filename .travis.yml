@@ -40,6 +40,8 @@ jobs:
         - BUILD_TAG=-cuda10.1
       before_deploy:
         - ./scripts/build_gpu_wheel.sh
+        - ls '/c/Program Files'
+        - ls '/c/Program Files/NVIDIA GPU Computing Toolkit'
     - name: ubuntu-cpu
       env:
         - BUILD_TAG=-cpu
