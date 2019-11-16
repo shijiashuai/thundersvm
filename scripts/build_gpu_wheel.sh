@@ -26,6 +26,8 @@ windows)
     choco install cuda
     export PATH=${MSBUILD_PATH}:$PATH
     export CUDA_HOME="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1"
+    ls $CUDA_HOME
+    export CUDA_ROOT_TOOLKIT_DIR=$CUDA_HOME
     cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -G "Visual Studio 14 2015 Win64" ..
     choco install python --version=3.6.3
     python -m pip install --upgrade pip
