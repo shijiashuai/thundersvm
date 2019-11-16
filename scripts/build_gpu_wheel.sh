@@ -23,16 +23,16 @@ linux)
 osx)
    ;;
 windows)
+    wget -q http://developer.download.nvidia.com/compute/cuda/10.1/Prod/network_installers/cuda_10.1.243_win10_network.exe
 #    wget -q http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_426.00_win10.exe
 #    ./cuda_10.1.243_426.00_win10.exe -s nvcc_10.1 cusparse_dev_10.1 cudart_10.1 visual_studio_integration_10.1
-    choco install cuda
+    ./cuda_10.1.243_win10_network.exe -s
     export PATH=${MSBUILD_PATH}:$PATH
     CUDA_HOME="/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1"
-    cat "/c/ProgramData/chocolatey/logs/chocolatey.log"
     echo  "1"
     ls "/c/Program Files"
     echo  "2"
-    ls "/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA"
+    ls "/c/Program Files/NVIDIA GPU Computing Toolkit/"
     cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -G "Visual Studio 14 2015 Win64" ..
     choco install python --version=3.6.3
     python -m pip install --upgrade pip
