@@ -1,6 +1,6 @@
 jobs:
   include:
-    - name: cu8
+    - name: ubuntu-cuda8.0
       env:
         - CUDA=8.0.61-1
         - CUDA_SHORT=8.0
@@ -9,7 +9,7 @@ jobs:
       dist: xenial
       compiler: gcc
       language: python
-    - name: cu9
+    - name: ubuntu-cuda9.2
       env:
         - CUDA=9.2.148-1
         - CUDA_SHORT=9.2
@@ -17,7 +17,7 @@ jobs:
         - BUILD_TAG=-cuda9.2
       dist: xenial
       language: python
-    - name: cu10
+    - name: ubuntu-cuda10.1
       env:
         - CUDA=10.1.105-1
         - CUDA_SHORT=10.1
@@ -25,7 +25,7 @@ jobs:
         - BUILD_TAG=-cuda10.1
       dist: bionic
       language: python
-    - name: win
+    - name: windows-cuda10.1
       os: windows
       language: cpp
       env:
