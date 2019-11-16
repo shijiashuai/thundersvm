@@ -32,11 +32,12 @@ jobs:
         - ./scripts/build_gpu_wheel.sh
     - name: windows-cuda10.1
       os: windows
-      language: cpp
+      language: bash
       env:
         - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
         - CUDA_HOME="c:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1"
+        - CUDA_TOOLKIT_ROOT_DIR="c:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1"
         - BUILD_TAG=-cuda10.1
       before_deploy:
         - ./scripts/build_gpu_wheel.sh
@@ -49,7 +50,7 @@ jobs:
         - ./scripts/build_cpu_wheel.sh
     - name: windows-cpu
       os: windows
-      language: cpp
+      language: bash
       env:
         - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
