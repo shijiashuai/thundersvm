@@ -25,7 +25,7 @@ osx)
 windows)
     wget -q http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_426.00_win10.exe
 #    ./cuda_10.1.243_win10_network.exe -s
-    7z e cuda_10.1.243_win10_network.exe
+    7z e cuda_10.1.243_426.00_win10.exe
     echo "1"
     ls
     echo "2"
