@@ -48,6 +48,7 @@ jobs:
         - ./scripts/build_cpu_wheel.sh
     - name: windows-cpu
       os: windows
+      language: cpp
       env:
         - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
@@ -62,3 +63,5 @@ deploy:
   file: "dist/*"
   file_glob: true
   skip_cleanup: true
+  on:
+    tags: true
