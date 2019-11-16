@@ -32,7 +32,7 @@ windows)
     echo  "1"
     ls "/c/Program Files"
     echo  "2"
-    ls "/c/Program Files/NVIDIA GPU Computing Toolkit/"
+    ls "/c/Program Files/NVIDIA Corporation/"
     cmake -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME} -G "Visual Studio 14 2015 Win64" ..
     choco install python --version=3.6.3
     python -m pip install --upgrade pip
