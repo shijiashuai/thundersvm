@@ -33,7 +33,6 @@ jobs:
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
         - BUILD_TAG=-cpu
 before_script:
-  - ls
   - ./scripts/build_test.sh
 script:
   - cmake --build . --target runtest
