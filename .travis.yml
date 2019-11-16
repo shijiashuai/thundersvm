@@ -33,7 +33,7 @@ jobs:
         - PATH=/c/Python36:/c/Python36/Scripts:$PATH
         - BUILD_TAG=-cuda10.1
 script:
-  - ./scripts/build_test.sh
+  - ./scripts/build_cputest.sh
 before_deploy:
   - ./scripts/install_cuda.sh
   - ./scripts/build_gpu_wheel.sh
