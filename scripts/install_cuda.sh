@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -x
+
 case ${TRAVIS_OS_NAME} in
 linux)
     INSTALLER=cuda-repo-${UBUNTU_VERSION}_${CUDA}_amd64.deb
-    http://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/${INSTALLER}
+    wget http://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/${INSTALLER}
     sudo dpkg -i ${INSTALLER}
     wget https://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/x86_64/7fa2af80.pub
     sudo apt-key add 7fa2af80.pub
@@ -17,6 +19,6 @@ linux)
 osx)
     ;;
 windows)
-    choco install
+    choco install cuda
     ;;
 esac
